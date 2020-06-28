@@ -8,17 +8,23 @@
   * D - Down
   * L - Left
   * R - Right
+  * B - Back
+  * E - Enter
   */
 char getch() {
     ev3dev::button up(ev3dev::button::up);
     ev3dev::button down(ev3dev::button::down);
     ev3dev::button left(ev3dev::button::left);
     ev3dev::button right(ev3dev::button::right);
+    ev3dev::button back(ev3dev::button::back);
+    ev3dev::button enter(ev3dev::button::enter);
     while(true) {
         if(up.pressed()) return 'U';
         if(down.pressed()) return 'D';
         if(left.pressed()) return 'L';
         if(right.pressed()) return 'R';
+        if(back.pressed()) return 'B';
+        if(enter.pressed()) return 'E';
     }
 }
 
@@ -51,6 +57,9 @@ int main(void) {
             case 'D':
                 if(selected >= 2) selected = 0;
                 else selected++;
+                break;
+            case 'B':
+                return 0;
                 break;
         }
 
